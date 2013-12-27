@@ -111,9 +111,7 @@ begin ()
 		}
 		
 		//Just iterate and let the time pass.
-		while (1) {
-			;
-		}
+		pause();
 	} else if (pid != -1) {
 		putw(pid, pidfile);
 	} else if (pid == -1) {
@@ -176,7 +174,7 @@ main(int argc, char *argv[])
 		m = BEGIN;
 	else
 		usage(argv[0]);		
-		
+
 	//Check if we're beginning the timer
 	//and the file exists.
 	err = access(PIDFILE, F_OK);
@@ -187,7 +185,7 @@ main(int argc, char *argv[])
 		printf("Timer is already running, please stop it first.\n");
 		exit(1);
 	}
-	
+
 	//Create or read the file used to store the PID of the timer.
 	if (m != BEGIN)
 		pidfile = fopen(PIDFILE, "r+");
